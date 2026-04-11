@@ -1,9 +1,11 @@
 # Local .terraform directories
-.terraform/
+.terraform*
 
 # .tfstate files
 *.tfstate
 *.tfstate.*
+
+*.out
 
 # Crash log files
 crash.log
@@ -35,3 +37,7 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+# vm Keys
+aws-key*
+azure-key*
