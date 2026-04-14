@@ -39,5 +39,5 @@ override.tf.json
 terraform.rc
 
 # vm Keys
-aws-key*
-azure-key*
+*key*
+
