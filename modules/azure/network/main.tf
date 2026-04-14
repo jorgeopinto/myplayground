@@ -11,7 +11,7 @@ resource "azurerm_resource_group" "quinta-do-gato_dev" {
 
 resource "azurerm_virtual_network" "qdg-HUB-WE" {
   name                = "HUB-${var.resource_group_name}-VNET"
-  location            = var.location
+  location            = azurerm_resource_group.quinta-do-gato_dev.location
   resource_group_name = azurerm_resource_group.quinta-do-gato_dev.name
   address_space       = var.HUB_VNET
   #tags                = local.common_tags
@@ -33,7 +33,7 @@ resource "azurerm_subnet_network_security_group_association" "NSG-association-li
 #criação de NSG's 
 resource "azurerm_network_security_group" "qdg-HUB-NSG" {
   name                = "acess-to-linux-WE"
-  location            = var.location
+  location            = azurerm_resource_group.quinta-do-gato_dev.location
   resource_group_name = azurerm_resource_group.quinta-do-gato.name
 
   security_rule {
