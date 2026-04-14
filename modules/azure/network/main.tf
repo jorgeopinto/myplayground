@@ -63,3 +63,17 @@ resource "azurerm_network_security_group" "qdg-HUB-NSG" {
 }
 
 
+/*
+diferentes nsgs por subnet
+
+variable "Azure_NSG_ids" {
+  type = list(string)
+  # cada índice corresponde à subnet do mesmo índice
+}
+
+resource "azurerm_subnet_network_security_group_association" "qdg-HUB-WE" {
+  count                     = length(var.Azure_Subnet_names)
+  subnet_id                 = azurerm_subnet.qdg-HUB-WE[count.index].id
+  network_security_group_id = var.Azure_NSG_ids[count.index]
+}
+*/
