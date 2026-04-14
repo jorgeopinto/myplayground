@@ -11,7 +11,7 @@ env:
   TF_VAR_azure_key_pub: ${{secrets.TF_VAR_azure_key_pub}}
 
 jobs:
-  terraform_apply:
+  plan_azure:
     name: Terraform Apply
     runs-on: ubuntu-latest
     defaults:
@@ -28,3 +28,4 @@ jobs:
       run: |
         terraform init
         terraform apply -auto-approve
+      working-directory: environments/dev/azure
