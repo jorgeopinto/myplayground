@@ -1,29 +1,39 @@
+#resource groups
+
+resource "azurerm_resource_group" "quinta-do-gato_dev" {
+  name     = var.resource_group_name
+  location = var.location
+  #tags = local.common_tags
+}
+
+
 #Network Azure
 
 resource "azurerm_virtual_network" "qdg-HUB-WE" {
-  name                = "QDG-HUB-WE"
-  location            = var.WE
-  resource_group_name = azurerm_resource_group.quinta-do-gato.name
-  address_space       = ["10.0.0.0/16"]
-  tags                = local.common_tags
+  name                = "HUB-${var.resource_group_name}-VNET"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.quinta-do-gato_dev.name
+  address_space       = var.HUB_VNET
+  #tags                = local.common_tags
 }
 
-resource "azurerm_subnet" "acess_to_linux_we" {
-  name                 = "acess-to-linux-we"
-  resource_group_name  = azurerm_resource_group.quinta-do-gato.name
+resource "azurerm_subnet" "qdg-HUB-WE" {
+  count = length(var.Azure_Subnet_names)
+  name                 = var.Azure_Subnet_names[count.index]
+  resource_group_name  = azurerm_resource_group.quinta-do-gato_dev.name
   virtual_network_name = azurerm_virtual_network.qdg-HUB-WE.name
-  address_prefixes     = ["10.0.1.0/24"]
+  address_prefixes     = [var.Azure_Subnets_prefixes[count.index]]
 }
 # Associar NSG to subnet de Linux
 resource "azurerm_subnet_network_security_group_association" "NSG-association-linux-WE" {
-  subnet_id                 = azurerm_subnet.acess_to_linux_we.id
-  network_security_group_id = azurerm_network_security_group.NSG-acess-to-linux-WE.id
+  subnet_id                 = azurerm_subnet.qdg-HUB-WE.id
+  network_security_group_id = azurerm_network_security_group.qdg-HUB-NSG.id
 }
 
 #criação de NSG's 
-resource "azurerm_network_security_group" "NSG-acess-to-linux-WE" {
+resource "azurerm_network_security_group" "qdg-HUB-NSG" {
   name                = "acess-to-linux-WE"
-  location            = var.WE
+  location            = var.location
   resource_group_name = azurerm_resource_group.quinta-do-gato.name
 
   security_rule {

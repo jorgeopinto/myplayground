@@ -11,12 +11,7 @@ terraform {
       version = "6.40.0"
     }
   }
-  backend "azurerm" {
-    resource_group_name  = "rg-JOP-P3"
-    storage_account_name = "jorgepintotstate"
-    container_name       = "remote-state"
-    key                  = "quintadogato/terraform.tfstate"
-  }
+  
 }
 
 provider "azurerm" {
@@ -32,15 +27,19 @@ provider "aws" {
     }
   }
 
-
-
 }
 
-#resource groups
-
-resource "azurerm_resource_group" "quinta-do-gato" {
-  name     = "rg-quinta-do-gato"
-  location = var.WE
-
-  tags = local.common_tags
+module "networking" {
+  source = "../../../modules/azure/network"
+  resource_group_name = "quinta-do-gato_dev"
+  location = "west europe"
+  HUB_VNET = ["10.0.0.0/16"]
+  Azure_Subnet_names = [
+    "compute-subnet",
+    "storage-subnet"
+    ]
+  Azure_Subnets_prefixes = [
+    "10.0.1.0/24", #compute-subnet
+    "10.0.2.0/24" #storage-subnet
+  ]
 }
