@@ -34,7 +34,7 @@ resource "azurerm_subnet_network_security_group_association" "NSG-association-li
 resource "azurerm_network_security_group" "qdg-HUB-NSG" {
   name                = "acess-to-linux-WE"
   location            = azurerm_resource_group.quinta-do-gato_dev.location
-  resource_group_name = azurerm_resource_group.quinta-do-gato.name
+  resource_group_name = azurerm_resource_group.quinta-do-gato_dev.name
 
   security_rule {
     name                       = "allow-SSH"
