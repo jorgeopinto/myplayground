@@ -37,5 +37,5 @@ module "compute" {
   vm_size             = "Standard_D2s_v3"
   subnet_id           = module.network.subnet_id[0]
   admin_user      = "jorge"
-  azure_key_pub = file("${path.root}/azure-key.pub")
+  azure_key_pub = var.azure_key_pub
   }
