@@ -32,9 +32,10 @@ module "network" {
 
 module "compute" {
   source              = "../../../modules/azure/compute"
-  prefix              = "myapp-dev"
   resource_group_name = "QDG_network_dev"
+  prefix              = "myapp-dev"
   vm_size             = "Standard_D2s_v3"
-  subnet_id           = module.networking.subnet_id[0]
+  subnet_id           = module.network.subnet_id[0]
   admin_user      = "jorge"
-}
+  azure_key_pub = file("../../../modules/azure/compute/azure_key.pub")
+  }
