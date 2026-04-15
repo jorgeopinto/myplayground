@@ -1,27 +1,12 @@
-#Regions:
-variable "WE" {
-  description = "regiao dos recurso em Azure"
-  type        = string
-  default     = "West Europe"
-}
-
-variable "UKS" {
-  description = "regiao de recursos em uk south"
-  type        = string
-  default     = "UK South"
-
-
-}
-
-#resource groups
 variable "resource_group_name" {
-  description = "nome resource group"
-  type = string
-  default = "quinta-do-gato"
-  
+  description = "Nome do Resource Group"
+  type        = string
 }
 
-
+variable "location" {
+  description = "Região Azure (ex: westeurope)"
+  type        = string
+}
 
 # Estrutura VNET's
 variable "HUB_VNET" {

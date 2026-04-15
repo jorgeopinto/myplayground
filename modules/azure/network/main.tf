@@ -1,6 +1,6 @@
 #resource groups
 
-resource "azurerm_resource_group" "quinta-do-gato_dev" {
+resource "azurerm_resource_group" "qdg_network_dev" {
   name     = var.resource_group_name
   location = "west europe"
   #tags = local.common_tags
@@ -11,8 +11,8 @@ resource "azurerm_resource_group" "quinta-do-gato_dev" {
 
 resource "azurerm_virtual_network" "qdg-HUB-WE" {
   name                = "HUB-${var.resource_group_name}-VNET"
-  location            = azurerm_resource_group.quinta-do-gato_dev.location
-  resource_group_name = azurerm_resource_group.quinta-do-gato_dev.name
+  location            = azurerm_resource_group.qdg_network_dev.location
+  resource_group_name = azurerm_resource_group.qdg_network_dev.name
   address_space       = var.HUB_VNET
   #tags                = local.common_tags
 }
@@ -20,7 +20,7 @@ resource "azurerm_virtual_network" "qdg-HUB-WE" {
 resource "azurerm_subnet" "qdg-HUB-WE" {
   count = length(var.Azure_Subnet_names)
   name                 = var.Azure_Subnet_names[count.index]
-  resource_group_name  = azurerm_resource_group.quinta-do-gato_dev.name
+  resource_group_name  = azurerm_resource_group.qdg_network_dev.name
   virtual_network_name = azurerm_virtual_network.qdg-HUB-WE.name
   address_prefixes     = [var.Azure_Subnets_prefixes[count.index]]
 }
@@ -33,9 +33,9 @@ resource "azurerm_subnet_network_security_group_association" "NSG-association-li
 
 #criação de NSG's 
 resource "azurerm_network_security_group" "qdg-HUB-NSG" {
-  name                = "acess-to-linux-WE"
-  location            = azurerm_resource_group.quinta-do-gato_dev.location
-  resource_group_name = azurerm_resource_group.quinta-do-gato_dev.name
+  name                = "ONLY-ALLOW-SSH"
+  location            = azurerm_resource_group.qdg_network_dev.location
+  resource_group_name = azurerm_resource_group.qdg_network_dev.name
 
   security_rule {
     name                       = "allow-SSH"
