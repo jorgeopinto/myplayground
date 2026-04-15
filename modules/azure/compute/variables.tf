@@ -13,9 +13,19 @@ variable "vm_size"{
   type = string
 }
 
+variable "subnet_id"{
+  description = "Tipo de VM a escolher"
+  type = string
+}
+
 variable "admin_user"{
   description = "Username Admin for machines"
   type = string
+}
+variable "azure_key_pub" {
+  description = "chave public para maquina Azure"
+  type        = string
+
 }
 
 
