@@ -32,8 +32,8 @@ module "network" {
 
 module "compute" {
   source              = "../../../modules/azure/compute"
-  resource_group_name = "QDG_network_dev"
-  prefix              = "myapp-dev"
+  resource_group_name = "QDG_compute_dev"
+  prefix              = "Linux_VM_1"
   vm_size             = "Standard_D2s_v3"
   subnet_id           = module.network.subnet_id[0]
   admin_user      = "jorge"
