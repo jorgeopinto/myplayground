@@ -58,7 +58,7 @@ module "hub_spoke1_peering" {
   source = "../../../modules/azure/network/vnet_peerings"
 
   vnet_HUB_id   = module.vnet-hub.vnet_id
-  vnet_SPOKE_id = module.vnet-hub.vnet_SPOKE_id
+  vnet_SPOKE_id = module.vnet-spoke.vnet_id
 }
 
 
