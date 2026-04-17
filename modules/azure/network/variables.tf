@@ -23,4 +23,26 @@ variable "Azure_Subnet_names"{
   description =  "Azure Subnet name"
   type = list(string)
 }
+
+#VNETs for peerings
+
+variable "vnet_HUB_id" {
+  description = "Região Azure (ex: westeurope)"
+  type        = string
+}
+
+variable "vnet_HUB_name" {
+  description = "Região Azure (ex: westeurope)"
+  type        = string
+}
+
+variable "vnet_SPOKE_id" {
+  description = "Região Azure (ex: westeurope)"
+  type        = string
+}
+
+variable "vnet_SPOKE_name" {
+  description = "Região Azure (ex: westeurope)"
+  type        = string
+}
   
