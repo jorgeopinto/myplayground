@@ -63,7 +63,7 @@ module "hub_spoke1_peering" {
 
   vnet_SPOKE_id = module.vnet-spoke.vnet_SPOKE_id
   vnet_SPOKE_name =module.vnet-spoke.vnet_SPOKE_name
-  resource_group_name = module.vnet-hub.resource_group_name
+  
 }
 
 
