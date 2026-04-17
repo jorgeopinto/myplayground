@@ -21,7 +21,7 @@ module "vnet-hub" {
   source = "../../../modules/azure/network"
   resource_group_name = "QDG_network_dev"
   location = "west europe"
-  ADDRESS = ["10.0.0.0/16"]
+  ADDRESS-HUB = ["10.0.0.0/16"]
   Azure_Subnet_names = [
     "GatewaySubnet",
     "AzureFirewallSubnet",
@@ -35,9 +35,9 @@ module "vnet-hub" {
 }
 module "vnet-spoke" {
   source = "../../../modules/azure/network"
-  resource_group_name = "QDG_network_dev"
+  resource_group_name = module.vnet-hub.resource_group_name
   location = module.vnet-hub.location
-  ADDRESS = ["10.1.0.0/16"]
+  ADDRESS-SPOKE = ["10.1.0.0/16"]
   Azure_Subnet_names = [
     "compute-subnet",
     "storage-subnet",
