@@ -1,13 +1,3 @@
-variable "resource_group_name" {
-  description = "Nome do Resource Group"
-  type        = string
-}
-
-variable "location" {
-  description = "Região Azure (ex: westeurope)"
-  type        = string
-}
-
 # Estrutura VNET's
 variable "add_hub" {
   description = "VNET HUB Azure"
@@ -15,7 +5,7 @@ variable "add_hub" {
 }
 variable "add_spoke" {
   description = "VNETs SPOKE Azure"
-  type = string
+  type = list(string)
 }
 
 variable "Azure_Subnets_prefixes"{
@@ -27,4 +17,16 @@ variable "Azure_Subnet_names"{
   description =  "Azure Subnet name"
   type = list(string)
 }
+
+
+variable "resource_group_name" {
+  description = "Nome do Resource Group"
+  type        = string
+}
+
+variable "location" {
+  description = "Região Azure (ex: westeurope)"
+  type        = string
+}
+
 
