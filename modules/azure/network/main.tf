@@ -40,6 +40,8 @@ resource "azurerm_subnet" "qdg-SUBNETS-WE" {
   virtual_network_name = azurerm_virtual_network.vnet-qdg.name
   address_prefixes     = [var.Azure_Subnets_prefixes[count.index]]
 }
+/*
+Needs adaptation to new scheme
 # Associar NSG to subnet de Linux
 resource "azurerm_subnet_network_security_group_association" "NSG-association-linux-WE" {
   count                     = length(var.Azure_Subnet_names)
@@ -77,6 +79,7 @@ resource "azurerm_network_security_group" "qdg-HUB-NSG" {
     destination_address_prefix = "10.0.1.0/24"
   }
 }
+*/
 
 
 /*
