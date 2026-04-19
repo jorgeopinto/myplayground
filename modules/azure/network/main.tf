@@ -8,7 +8,7 @@ resource "azurerm_resource_group" "qdg_network_dev" {
 
 
 #Network Azure
-
+/*
 resource "azurerm_virtual_network" "qdg-HUB-WE" {
   name                = "HUB-${var.resource_group_name}-VNET"
   location            = azurerm_resource_group.qdg_network_dev.location
@@ -24,6 +24,14 @@ resource "azurerm_virtual_network" "qdg-SPOKE-WE" {
   address_space       = var.ADDRESS-SPOKE
   #tags                = local.common_tags
 }
+*/
+resource "azurerm_virtual_network" "vnet" {
+  name                = "${var.vnet_type}-dev-vnet"
+  location            = var.location
+  resource_group_name = var.resource_group_name
+  address_space       = var.address_space
+}
+
 
 resource "azurerm_subnet" "qdg-SUBNETS-WE" {
   count = length(var.Azure_Subnet_names)

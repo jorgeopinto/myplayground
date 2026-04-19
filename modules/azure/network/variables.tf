@@ -1,11 +1,17 @@
 # Estrutura VNET's
-variable "add_hub" {
-  description = "VNET HUB Azure"
-  type = list(string)
+variable "vnet_type" {
+  description = "Type of VNet: hub or spoke"
+  type        = string
+
+  validation {
+    condition     = contains(["hub", "spoke"], var.vnet_type)
+    error_message = "vnet_type must be either 'hub' or 'spoke'."
+  }
 }
-variable "add_spoke" {
-  description = "VNETs SPOKE Azure"
-  type = list(string)
+
+variable "address_space" {
+  description = "Address space for the VNet"
+  type        = list(string)
 }
 
 variable "Azure_Subnets_prefixes"{

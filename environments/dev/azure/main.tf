@@ -19,37 +19,44 @@ provider "azurerm" {
 
 
 module "vnet-hub" {
-  source = "../../../modules/azure/network"
+  source              = "../../../modules/azure/network"
   resource_group_name = "QDG_network_dev"
-  location = "west europe"
-  add_hub = ["10.0.0.0/16"]
+  location            = "west europe"
+
+  vnet_type    = "hub"
+  address_space = ["10.0.0.0/16"]
+
   Azure_Subnet_names = [
     "GatewaySubnet",
     "AzureFirewallSubnet",
     "NVA"
   ]
+
   Azure_Subnets_prefixes = [
-    "10.0.1.0/24", #0-GatewaySubnet
-    "10.0.2.0/24", #1-AzureFirewallSubnet
-    "10.0.3.0/24"  #2-NVA
+    "10.0.1.0/24",
+    "10.0.2.0/26", # IMPORTANT: /26 for Azure Firewall
+    "10.0.3.0/24"
   ]
 }
 
-
 module "vnet-spoke" {
-  source = "../../../modules/azure/network"
+  source              = "../../../modules/azure/network"
   resource_group_name = module.vnet-hub.resource_group_name
-  location = module.vnet-hub.location
-  add_spoke = ["10.1.0.0/16"]
+  location            = module.vnet-hub.location
+
+  vnet_type    = "spoke"
+  address_space = ["10.1.0.0/16"]
+
   Azure_Subnet_names = [
     "compute-subnet",
     "storage-subnet",
-    "kubernets-subnet"
+    "kubernetes-subnet"
   ]
+
   Azure_Subnets_prefixes = [
-    "10.1.1.0/24", #0-compute-subnet
-    "10.1.2.0/24", #1-Storage-subnet
-    "10.1.3.0/24"  #2-kubernets-subnet
+    "10.1.1.0/24",
+    "10.1.2.0/24",
+    "10.1.3.0/24"
   ]
 }
 
@@ -59,10 +66,12 @@ module "vnet-spoke" {
 
 module "hub_spoke1_peering" {
   source = "../../../modules/azure/network/vnet_peerings"
+  
+  resource_group_name= module.vnet-hub.resource_group_name
 
   HUB_VNET_id   = module.vnet-hub.vnet_HUB_id
   HUB_VNET_name = module.vnet-hub.vnet_HUB_name
-  resource_group_name= module.vnet-hub.resource_group_name
+  
 
   SPOKE_VNET_id = module.vnet-spoke.vnet_SPOKE_id
   SPOKE_VNET_name =module.vnet-spoke.vnet_HUB_name
