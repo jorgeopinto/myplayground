@@ -27,5 +27,5 @@ jobs:
     - name: Terraform Plan
       run: |
         terraform init
-      terraform force-unlock -force <LOCK_ID>
-    displayName: 'Force Unlock Terraform State'
+        terraform force-unlock -force <LOCK_ID>
+      displayName: 'Force Unlock Terraform State'
