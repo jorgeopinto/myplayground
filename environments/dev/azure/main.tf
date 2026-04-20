@@ -31,7 +31,7 @@ resource "azurerm_resource_group" "hub" {
   location = var.location
   tags     = var.common_tags
 }
-/*
+
 resource "azurerm_resource_group" "spokes" {
   for_each = var.spokes
 
@@ -39,7 +39,7 @@ resource "azurerm_resource_group" "spokes" {
   location = var.location
   tags     = var.common_tags
 }
-*/
+
 
 ######################
 #        VNETS       #
