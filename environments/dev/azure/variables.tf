@@ -55,16 +55,7 @@ variable "hub_nva_subnet_prefix" {
 }
 
 
-variable "enable_gateway_transit" {
-  description = "Activar gateway transit (requer VPN Gateway no Hub)"
-  type        = bool
-  #default     = false
-}
-variable "disable_gateway_transit" {
-  description = "Activar gateway transit (requer VPN Gateway no Hub)"
-  type        = bool
-  #default     = false
-}
+
 
 #─────────────────────────────────────
 #Declarar variaveis a usar para um HUB
