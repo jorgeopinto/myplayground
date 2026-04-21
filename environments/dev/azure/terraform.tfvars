@@ -35,7 +35,7 @@ spokes = {
     ]
   }
 
-/*
+
   # ── Spoke 2: Data ──────────────────────────────
   spoke2 = {
     resource_group_name = "rg-spoke-data"
@@ -55,7 +55,7 @@ spokes = {
       }
     ]
   }
-
+/*
   # ── Spoke 3: compute- storage - kubernets ───────────────────
   spoke3 = {
     resource_group_name = "rg-spoke-compute"
@@ -98,6 +98,6 @@ spokes = {
       }
     ]
   }
- 
+*/ 
 }
-*/
+
