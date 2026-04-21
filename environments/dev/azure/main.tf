@@ -95,7 +95,7 @@ module "spoke_vnets" {
 
   subnets = each.value.subnets
 
-  #depends_on = [azurerm_resource_group.spokes]
+  depends_on = [azurerm_resource_group.spokes]
 }
 
 ##################################
@@ -114,11 +114,10 @@ module "hub_spoke_peerings" {
   spoke_vnet_name           = module.spoke_vnets[each.key].vnet_name
   spoke_vnet_id             = module.spoke_vnets[each.key].vnet_id
   spoke_resource_group_name = azurerm_resource_group.spokes[each.key].name
-
+/*
   allow_gateway_transit   = var.enable_gateway_transit
-  use_remote_gateways     = var.enable_gateway_transit
   allow_forwarded_traffic = true
-
+*/
   depends_on = [module.hub_vnet, module.spoke_vnets]
 }
   

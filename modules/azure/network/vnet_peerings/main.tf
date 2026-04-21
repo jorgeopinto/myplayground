@@ -10,8 +10,9 @@ resource "azurerm_virtual_network_peering" "hub_to_spoke" {
   remote_virtual_network_id = var.spoke_vnet_id
 
   allow_virtual_network_access = true
-  allow_forwarded_traffic      = var.allow_forwarded_traffic
-  allow_gateway_transit        = var.allow_gateway_transit
+  allow_forwarded_traffic      = true
+  allow_gateway_transit        = true
+  use_remote_gateways = false
 }
 
 # Peering: Spoke → Hub
@@ -22,6 +23,7 @@ resource "azurerm_virtual_network_peering" "spoke_to_hub" {
   remote_virtual_network_id = var.hub_vnet_id
 
   allow_virtual_network_access = true
-  allow_forwarded_traffic      = var.allow_forwarded_traffic
-  use_remote_gateways          = var.use_remote_gateways
+  allow_forwarded_traffic      = true
+  allow_gateway_transit        = false
+  use_remote_gateways = true
 }

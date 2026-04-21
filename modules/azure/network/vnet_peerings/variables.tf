@@ -28,16 +28,20 @@ variable "spoke_resource_group_name" {
   type        = string
 }
 
+#----------------------------------------
+#peering parameters
+#----------------------------------------
+
 variable "allow_gateway_transit" {
-  description = "Permitir gateway transit no Hub"
+  description = "Permite que a VNet local ofereça o seu gateway VPN/ExpressRoute à outra VNet. True do lado do HUB"
   type        = bool
-  default     = false
+  #default     = false
 }
 
 variable "use_remote_gateways" {
-  description = "Usar gateways remotos no Spoke"
+  description = "Permite que a VNet local use o gateway da VNet remota. Só pode ser usada de um dos lados como true, clarament do lado oda spokes."
   type        = bool
-  default     = false
+  #default     = false
 }
 
 variable "allow_forwarded_traffic" {
