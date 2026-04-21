@@ -35,6 +35,7 @@ spokes = {
     ]
   }
 
+/*
   # ── Spoke 2: Data ──────────────────────────────
   spoke2 = {
     resource_group_name = "rg-spoke-data"
@@ -99,3 +100,4 @@ spokes = {
   }
  
 }
+*/
