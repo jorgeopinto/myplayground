@@ -18,6 +18,15 @@ variable "address_space" {
   type        = list(string)
 }
 
+variable "hub_subnets" {
+  description = "Lista de subnets a criar no hub"
+  type = list(object({
+    name             = string
+    address_prefixes = list(string)
+  }))
+  default = []
+}
+
 variable "subnets" {
   description = "Lista de subnets a criar"
   type = list(object({
