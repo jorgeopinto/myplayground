@@ -89,12 +89,12 @@ module "spoke_vnets" {
 
 module "hub_spoke_peerings" {
   source = "../../../modules/azure/network/vnet_peerings"
-  for_each = var.hubs
+  for_each = var.spokes
 
   #HUB
-  hub_vnet_name             = module.hub_vnet[each.key].vnet_name
-  hub_vnet_id               = module.hub_vnet[each.key].vnet_id
-  hub_resource_group_name   = azurerm_resource_group.hub[each.key].name
+  hub_vnet_name             = module.hub_vnet[each.value.hub].vnet_name
+  hub_vnet_id               = module.hub_vnet[each.value.hub].vnet_id
+  hub_resource_group_name   = azurerm_resource_group.hub[each.value.hub].name
 
   # Hub → Spoke
   HUB-TO-SPOKE-allow_virtual_network_access = true

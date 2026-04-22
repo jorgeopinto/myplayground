@@ -64,6 +64,7 @@ common_tags = {
 spokes = {
   # ── Spoke 1: App ──────────────────────────────
   spoke1 = {
+    hub = "hub1"
     resource_group_name = "rg-spoke-app"
     vnet_name           = "vnet-spoke-app"
     address_space       = "10.1.0.0/16"
@@ -87,6 +88,7 @@ spokes = {
 /*
   # ── Spoke 2: Data ──────────────────────────────
   spoke2 = {
+    hub = "hub1"
     resource_group_name = "rg-spoke-data"
     vnet_name           = "vnet-spoke-data"
     address_space       = "10.2.0.0/16"
@@ -109,6 +111,7 @@ spokes = {
 
   # ── Spoke 3: compute- storage - kubernets ───────────────────
   spoke3 = {
+    hub = "hub1"
     resource_group_name = "rg-spoke-compute"
     vnet_name           = "vnet-spoke-compute"
     address_space       = "10.3.0.0/16"
@@ -160,6 +163,7 @@ spokes = {
 
     # ── Spoke 4: Shared Services ───────────────────
   spoke4 = {
+    hub = "hub1"
     resource_group_name = "rg-spoke-shared"
     vnet_name           = "vnet-spoke-shared"
     address_space       = "10.4.0.0/16"
