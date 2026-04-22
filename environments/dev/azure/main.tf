@@ -50,6 +50,7 @@ resource "azurerm_resource_group" "spokes" {
 
 module "hub_vnet" {
   source              = "../../../modules/azure/network"
+  for_each = var.hubs
 
   name                = each.value.vnet_name
   resource_group_name = azurerm_resource_group.hub[each.key].name
