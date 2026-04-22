@@ -56,7 +56,12 @@ variable "hub_nva_subnet_prefix" {
 
 variable "hub_subnets" {
   description = "Subnets do Hub com regras NSG opcionais"
-  type = list(object({
+    type = map(object({
+    resource_group_name = string
+    vnet_name           = string
+    address_space       = string
+    tags                = map(string)
+    subnets = list(object({
     name             = string
     address_prefixes = list(string)
     nsg_rules = optional(list(object({

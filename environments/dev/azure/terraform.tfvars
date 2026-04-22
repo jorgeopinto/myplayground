@@ -67,10 +67,12 @@ spokes = {
       {
         name             = "snet-frontend"
         address_prefixes = ["10.1.1.0/24"]
+        nsg_rules        = []
       },
       {
         name             = "snet-backend"
         address_prefixes = ["10.1.2.0/24"]
+        nsg_rules        = []
       }
     ]
   }
