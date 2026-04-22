@@ -89,7 +89,7 @@ module "spoke_vnets" {
 
 module "hub_spoke_peerings" {
   source = "../../../modules/azure/network/vnet_peerings"
-  for_each = var.spokes
+  for_each = var.hubs
 
   #HUB
   hub_vnet_name             = module.hub_vnet[each.key].vnet_name
