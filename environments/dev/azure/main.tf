@@ -139,7 +139,7 @@ module "hub_nsgs" {
   source   = "../../../modules/azure/network/nsg"
   for_each = var.hubs
 
-  resource_group_name = azurerm_resource_group.hubs[each.key].name
+  resource_group_name = azurerm_resource_group.hub[each.key].name
   location            = var.location
   tags                = merge(var.common_tags, each.value.tags)
 
