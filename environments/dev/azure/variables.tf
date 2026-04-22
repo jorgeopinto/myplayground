@@ -47,6 +47,7 @@ variable "hubs" {
 variable "spokes" {
   description = "Mapa de configurações dos Spokes"
   type = map(object({
+    hub = string
     resource_group_name = string
     vnet_name           = string
     address_space       = string
