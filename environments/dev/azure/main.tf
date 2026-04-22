@@ -29,7 +29,7 @@ terraform {
 resource "azurerm_resource_group" "hub" {
   for_each = var.hubs
   
-  name     = each.value.resource_group_name
+  name     = each.value.hub_resource_group_name
   location = var.location
   tags     = var.common_tags
 }
