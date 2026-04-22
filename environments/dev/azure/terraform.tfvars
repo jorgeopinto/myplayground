@@ -82,7 +82,7 @@ spokes = {
     ]
   }
 
-
+/*
   # ── Spoke 2: Data ──────────────────────────────
   spoke2 = {
     resource_group_name = "rg-spoke-data"
@@ -155,7 +155,7 @@ spokes = {
       }
     ]
   }
-/*
+
     # ── Spoke 4: Shared Services ───────────────────
   spoke4 = {
     resource_group_name = "rg-spoke-shared"

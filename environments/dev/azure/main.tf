@@ -27,7 +27,9 @@ terraform {
 # ─────────────────────────────────────────
 
 resource "azurerm_resource_group" "hub" {
-  name     = var.hub_resource_group_name
+  for_each = var.hubs
+  
+  name     = each.value.resource_group_name
   location = var.location
   tags     = var.common_tags
 }
@@ -49,13 +51,13 @@ resource "azurerm_resource_group" "spokes" {
 module "hub_vnet" {
   source              = "../../../modules/azure/network"
 
-  name                = var.hub_vnet_name
+  name                = each.value.vnet_name
   resource_group_name = azurerm_resource_group.hub.name
   location            = var.location
-  address_space       = [var.hub_address_space]
+  address_space       = [each.value.address_space]
   tags                = var.common_tags
 
-  subnets = var.subnets
+  subnets = each.value.subnets
 
   depends_on = [azurerm_resource_group.hub]
 }
