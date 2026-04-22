@@ -52,7 +52,7 @@ module "hub_vnet" {
   source              = "../../../modules/azure/network"
 
   name                = each.value.vnet_name
-  resource_group_name = azurerm_resource_group.hub.name
+  resource_group_name = azurerm_resource_group.hub[each.key].name
   location            = var.location
   address_space       = [each.value.address_space]
   tags                = var.common_tags
