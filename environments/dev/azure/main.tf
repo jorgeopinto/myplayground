@@ -91,7 +91,7 @@ module "hub_spoke_peerings" {
   source = "../../../modules/azure/network/vnet_peerings"
   for_each = var.spokes
 
-  #HUB
+  #HUB (dinâmico, depende do spoke)
   hub_vnet_name             = module.hub_vnet[each.value.hub].vnet_name
   hub_vnet_id               = module.hub_vnet[each.value.hub].vnet_id
   hub_resource_group_name   = azurerm_resource_group.hub[each.value.hub].name
@@ -111,7 +111,7 @@ module "hub_spoke_peerings" {
   
 
 
-  #SPOKE
+  #SPOKE (cada spoke)
   spoke_vnet_name           = module.spoke_vnets[each.key].vnet_name
   spoke_vnet_id             = module.spoke_vnets[each.key].vnet_id
   spoke_resource_group_name = azurerm_resource_group.spokes[each.key].name
@@ -146,7 +146,7 @@ module "hub_nsgs" {
 
   # Filtra subnets do Spoke que tenham regras NSG definidas
   subnets = {
-    for s in each.value.subnets :
+    for s in each.value.hub_subnets :
     s.name => {
       subnet_id = module.hub_vnet[each.key].subnet_ids[s.name]
       rules     = s.nsg_rules

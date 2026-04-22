@@ -1,16 +1,16 @@
 output "hub_vnet_id" {
   description = "ID da VNet Hub"
-  value       = module.hub_vnet.vnet_id
+  value       = { for k, v in module.hub_vnet : k => v.vnet_id }
 }
 
 output "hub_vnet_name" {
   description = "Nome da VNet Hub"
-  value       = module.hub_vnet.vnet_name
+  value       = { for k, v in module.hub_vnet : k => v.vnet_id }
 }
 
 output "hub_subnet_ids" {
   description = "IDs das subnets do Hub"
-  value       = module.hub_vnet.subnet_ids
+  value       = { for k, v in module.hub_vnet : k => v.subnet_ids }
 }
 
 output "spoke_vnet_ids" {
@@ -39,7 +39,7 @@ output "peering_ids" {
 }
 output "hub_nsg_ids" {
   description = "IDs dos NSGs do Hub (nome da subnet => id do NSG)"
-  value       = module.hub_nsgs.nsg_ids
+  value       = { for k, v in module.hub_nsgs : k => v.nsg_ids }
 }
 
 output "spoke_nsg_ids" {
