@@ -67,7 +67,7 @@ module "hub_vnet" {
 # ─────────────────────────────────────────
 # Spoke VNets (dinâmico via variável)
 # ─────────────────────────────────────────
-
+/*
 module "spoke_vnets" {
   source              = "../../../modules/azure/network"
   for_each = var.spokes
@@ -131,7 +131,7 @@ module "hub_spoke_peerings" {
 
   depends_on = [module.hub_vnet, module.spoke_vnets]
 }
-
+*/
 # ─────────────────────────────────────────
 # NSGs por Subnet (Hub)
 # ─────────────────────────────────────────
@@ -159,7 +159,7 @@ module "hub_nsgs" {
 # ─────────────────────────────────────────
 # NSGs por Subnet (Spokes)
 # ─────────────────────────────────────────
-
+/*
 module "spoke_nsgs" {
   source   = "../../../modules/azure/network/nsg"
   for_each = var.spokes
@@ -182,7 +182,7 @@ module "spoke_nsgs" {
 }
 
   
-
+*/
 
 ######################
 #        VMS         #
