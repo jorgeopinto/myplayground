@@ -94,15 +94,15 @@ variable "hub_to_spoke_allow_virtual_network_access" {
   type        = bool
 }
 variable "hub_to_spoke_allow_forwarded_traffic" {
-  description = "HUB TO SPOKE -> virtual network access"
+  description = "HUB TO SPOKE -> allow forwarded traffic"
   type        = bool
 }
 variable "hub_to_spoke_allow_gateway_transit" {
-  description = "HUB TO SPOKE -> virtual network access"
+  description = "HUB TO SPOKE -> allow gateway transit"
   type        = bool
 }
 variable "hub_to_spoke_use_remote_gateways" {
-  description = "HUB TO SPOKE -> virtual network access"
+  description = "HUB TO SPOKE -> use remote gateways"
   type        = bool
 }
 
@@ -112,14 +112,14 @@ variable "spoke_to_hub_allow_virtual_network_access" {
   type        = bool
 }
 variable "spoke_to_hub_allow_forwarded_traffic" {
-  description = "HUB TO SPOKE -> virtual network access"
+  description = "HUB TO SPOKE -> allow virtual network access"
   type        = bool
 }
 variable "spoke_to_hub_allow_gateway_transit" {
-  description = "HUB TO SPOKE -> virtual network access"
+  description = "HUB TO SPOKE -> allow gateway transit"
   type        = bool
 }
 variable "spoke_to_hub_use_remote_gateways" {
-  description = "HUB TO SPOKE -> virtual network access"
+  description = "HUB TO SPOKE -> use remote gateways"
   type        = bool
 }
