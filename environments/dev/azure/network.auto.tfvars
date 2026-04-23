@@ -14,26 +14,26 @@ common_tags = {
 
 hubs = {
   hub1 ={
-    hub_resource_group_name      = "QDG_network_dev"
+    hub_resource_group_name      = "QDG_network_dev_hub1"
     hub_vnet_name                = "vnet-hub"
-    hub_address_space            = "10.0.0.0/16"
+    hub_address_space            = "10.1.0.0/16"
     tags = {
       Workload = "app"
     }
     subnets = [
       {
         name             = "GatewaySubnet"
-       address_prefixes = ["10.0.0.0/27"]
+       address_prefixes = ["10.1.0.0/27"]
        nsg_rules        = [] # Não suporta NSG — obrigatório estar vazio
       },
       {
         name             = "AzureFirewallSubnet"
-        address_prefixes = ["10.0.1.0/26"]
+        address_prefixes = ["10.1.1.0/26"]
         nsg_rules        = [] # Não suporta NSG — obrigatório estar vazio
       },
       {
         name             = "snet-NVA"
-        address_prefixes = ["10.0.2.0/24"]
+        address_prefixes = ["10.1.2.0/24"]
         nsg_rules = [
           {
             name                       = "allow-ssh-inbound"
@@ -44,7 +44,56 @@ hubs = {
             source_port_range          = "*"
             destination_port_range     = "22"
             source_address_prefix      = "85.241.235.71/32"
-            destination_address_prefix = "10.0.2.0/24"
+            destination_address_prefix = "10.1.2.0/24"
+          },
+          {
+            name                       = "deny-internet-inbound"
+            priority                   = 4096
+            direction                  = "Inbound"
+            access                     = "Deny"
+            protocol                   = "*"
+            source_port_range          = "*"
+            destination_port_range     = "*"
+            source_address_prefix      = "Internet"
+            destination_address_prefix = "*"
+          }
+        
+        ]
+      }
+    ] 
+  }
+    hub2 ={
+    hub_resource_group_name      = "QDG_network_dev_hub2"
+    hub_vnet_name                = "vnet-hub"
+    hub_address_space            = "10.2.0.0/16"
+    tags = {
+      Workload = "app"
+    }
+    subnets = [
+      {
+        name             = "GatewaySubnet"
+       address_prefixes = ["10.2.0.0/27"]
+       nsg_rules        = [] # Não suporta NSG — obrigatório estar vazio
+      },
+      {
+        name             = "AzureFirewallSubnet"
+        address_prefixes = ["10.2.1.0/26"]
+        nsg_rules        = [] # Não suporta NSG — obrigatório estar vazio
+      },
+      {
+        name             = "snet-NVA"
+        address_prefixes = ["10.2.2.0/24"]
+        nsg_rules = [
+          {
+            name                       = "allow-ssh-inbound"
+            priority                   = 100
+            direction                  = "Inbound"
+            access                     = "Allow"
+            protocol                   = "Tcp"
+            source_port_range          = "*"
+            destination_port_range     = "22"
+            source_address_prefix      = "85.241.235.71/32"
+            destination_address_prefix = "10.2.2.0/24"
           },
           {
             name                       = "deny-internet-inbound"
@@ -78,19 +127,19 @@ spokes = {
     hub = "hub1"
     resource_group_name = "rg-spoke-app"
     vnet_name           = "vnet-spoke-app"
-    address_space       = "10.1.0.0/16"
+    address_space       = "10.100.0.0/16"
     tags = {
       Workload = "app"
     }
     subnets = [
       {
         name             = "snet-frontend"
-        address_prefixes = ["10.1.1.0/24"]
+        address_prefixes = ["10.100.1.0/24"]
         nsg_rules        = []
       },
       {
         name             = "snet-backend"
-        address_prefixes = ["10.1.2.0/24"]
+        address_prefixes = ["10.100.2.0/24"]
         nsg_rules        = []
       }
     ]
@@ -98,42 +147,43 @@ spokes = {
 
 
   # ── Spoke 2: Data ──────────────────────────────
+  /*
   spoke2 = {
-    hub = "hub1"
+    hub = "hub2"
     resource_group_name = "rg-spoke-data"
     vnet_name           = "vnet-spoke-data"
-    address_space       = "10.2.0.0/16"
+    address_space       = "10.200.0.0/16"
     tags = {
       Workload = "data"
     }
     subnets = [
       {
         name             = "snet-databases"
-        address_prefixes = ["10.2.1.0/24"]
+        address_prefixes = ["10.200.1.0/24"]
         nsg_rules        = []
       },
       {
         name             = "snet-analytics"
-        address_prefixes = ["10.2.2.0/24"]
+        address_prefixes = ["10.2.200.0/24"]
         nsg_rules        = []
       }
     ]
   }
-  
+  */
   # ── Spoke 3: compute- storage - kubernets ───────────────────
-  /*
+  
   spoke3 = {
-    hub = "hub1"
+    hub = "hub2"
     resource_group_name = "rg-spoke-compute"
     vnet_name           = "vnet-spoke-compute"
-    address_space       = "10.3.0.0/16"
+    address_space       = "10.200.0.0/16"
     tags = {
       Workload = "shared"
     }
     subnets = [
       {
         name             = "snet-compute"
-        address_prefixes = ["10.3.1.0/24"]
+        address_prefixes = ["10.200.1.0/24"]
         nsg_rules = [
           {
             name                       = "allow-backend-inbound"
@@ -162,18 +212,19 @@ spokes = {
       
       {
         name             = "snet-storages"
-        address_prefixes = ["10.3.2.0/24"]
+        address_prefixes = ["10.200.2.0/24"]
         nsg_rules        = []
       },
       {
         name             = "snet-Kubernets"
-        address_prefixes = ["10.3.3.0/24"]
+        address_prefixes = ["10.200.3.0/24"]
         nsg_rules        = []
       }
     ]
   }
 
   # ── Spoke 4: Shared Services ───────────────────
+  /*
   spoke4 = {
     hub = "hub1"
     resource_group_name = "rg-spoke-shared"
