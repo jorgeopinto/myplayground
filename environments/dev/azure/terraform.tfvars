@@ -19,6 +19,7 @@ hubs = {
         address_prefixes = ["10.0.1.0/26"]
         nsg_rules        = [] # Não suporta NSG — obrigatório estar vazio
       },
+      /*
       {
         name             = "snet-NVA"
         address_prefixes = ["10.0.2.0/24"]
@@ -45,6 +46,7 @@ hubs = {
             source_address_prefix      = "Internet"
             destination_address_prefix = "*"
           }
+        */
         ]
       }
     ] 

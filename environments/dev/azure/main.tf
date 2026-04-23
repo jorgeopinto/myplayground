@@ -144,7 +144,7 @@ module "hub_nsgs" {
   location            = var.location
   tags                = merge(var.common_tags, each.value.tags)
 
-  # Filtra subnets do Spoke que tenham regras NSG definidas
+  # Filtra subnets do hub que tenham regras NSG definidas
   subnets = {
     for s in each.value.hub_subnets :
     s.name => {
