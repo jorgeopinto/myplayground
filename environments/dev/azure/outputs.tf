@@ -17,7 +17,7 @@ output "hub_nsg_ids" {
   description = "IDs dos NSGs do Hub (nome da subnet => id do NSG)"
   value       = { for k, v in module.hub_nsgs : k => v.nsg_ids }
 }
-/*
+
 output "spoke_vnet_ids" {
   description = "IDs das VNets Spoke"
   value       = { for k, v in module.spoke_vnets : k => v.vnet_id }
@@ -49,4 +49,3 @@ output "spoke_nsg_ids" {
   value       = { for k, v in module.spoke_nsgs : k => v.nsg_ids }
 }
 
-*/

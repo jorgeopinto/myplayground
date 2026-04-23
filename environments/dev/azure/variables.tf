@@ -43,7 +43,7 @@ variable "hubs" {
 #───────────────────────────────────────────────
 #Declarar variaveis a usar para um HUB com NSG
 #───────────────────────────────────────────────
-/*
+
 variable "spokes" {
   description = "Mapa de configurações dos Spokes"
   type = map(object({
@@ -69,7 +69,7 @@ variable "spokes" {
     }))
   }))
 }
-*/
+
 
 #─────────────────────────────────────
 #Declarar variaveis a usar em tags
