@@ -63,6 +63,7 @@ common_tags = {
 
 spokes = {
   # ── Spoke 1: App ──────────────────────────────
+  /*
   spoke1 = {
     hub = "hub1"
     resource_group_name = "rg-spoke-app"
@@ -108,7 +109,7 @@ spokes = {
       }
     ]
   }
-
+*/
   # ── Spoke 3: compute- storage - kubernets ───────────────────
   spoke3 = {
     hub = "hub1"
