@@ -195,9 +195,9 @@ spokes = {
       }
     ]
   }
-
-}
 */
+}
+
 # ─────────────────────────────────────────────────────
 # Vnet Peerings
 # Static. advertizement routes from a gateway
