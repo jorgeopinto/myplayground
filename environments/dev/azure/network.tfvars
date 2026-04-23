@@ -209,28 +209,28 @@ spokes = {
 # ────────VNET_PEERINGS HUB-to-SPOKE ─────────────────────────────────
  # Hub → Spoke
   #Permite tráfego entre VNets. normalmente true
-  HUB-TO-SPOKE-allow_virtual_network_access = true
+  hub_to_spoke_allow_virtual_network_access = true
   
   #Permite tráfego que foi roteado por um appliance (firewall, NVA). Usado quando tens firewalls, Azure Firewall, appliances virtuais
-  HUB-TO-SPOKE-allow_forwarded_traffic      = true
+  hub_to_spoke_allow_forwarded_traffic      = true
   
   #Permite que a VNet local ofereça o seu gateway VPN/ExpressRoute à outra VNet. True do lado do HUB
-  HUB-TO-SPOKE-allow_gateway_transit        = true
+  hub_to_spoke_allow_gateway_transit        = true
   
   #Permite que a VNet local use o gateway da VNet remota. Só pode ser usada de um dos lados como true, clarament do lado oda spokes.
-  HUB-TO-SPOKE-use_remote_gateways          = false
+  hub_to_spoke_use_remote_gateways          = false
 
 # ────────VNET_PEERINGS HUB-to-SPOKE ─────────────────────────────────
  # Spoke → Hub
   #Permite tráfego entre VNets. normalmente true
-  SPOKE-TO-HUB-allow_virtual_network_access = true
+  spoke_to_hub_allow_virtual_network_access = true
   
   #Permite tráfego que foi roteado por um appliance (firewall, NVA). Usado quando tens firewalls, Azure Firewall, appliances virtuais
-  SPOKE-TO-HUB-allow_forwarded_traffic      = true
+  spoke_to_hub_allow_forwarded_traffic      = true
   
   #Permite que a VNet local ofereça o seu gateway VPN/ExpressRoute à outra VNet. True do lado do HUB
-  SPOKE-TO-HUB-allow_gateway_transit        = false
+  spoke_to_hub_allow_gateway_transit        = false
   
   #Permite que a VNet local use o gateway da VNet remota. Só pode ser usada de um dos lados como true, clarament do lado oda spokes.
-  SPOKE-TO-HUB-use_remote_gateways          = false
+  spoke_to_hub_use_remote_gateways          = false
   

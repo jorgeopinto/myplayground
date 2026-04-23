@@ -9,10 +9,10 @@ resource "azurerm_virtual_network_peering" "hub_to_spoke" {
   virtual_network_name      = var.hub_vnet_name
   remote_virtual_network_id = var.spoke_vnet_id
 
-  allow_virtual_network_access = var.HUB-TO-SPOKE-allow_virtual_network_access
-  allow_forwarded_traffic      = var.HUB-TO-SPOKE-allow_forwarded_traffic
-  allow_gateway_transit        = var.HUB-TO-SPOKE-allow_gateway_transit
-  use_remote_gateways = var.HUB-TO-SPOKE-use_remote_gateways
+  allow_virtual_network_access = var.hub_to_spoke_allow_virtual_network_access
+  allow_forwarded_traffic      = var.hub_to_spoke_allow_forwarded_traffic
+  allow_gateway_transit        = var.hub_to_spoke_allow_gateway_transit
+  use_remote_gateways = var.hub_to_spoke_use_remote_gateways
 
 }
 
@@ -24,9 +24,9 @@ resource "azurerm_virtual_network_peering" "spoke_to_hub" {
   remote_virtual_network_id = var.hub_vnet_id
 
 
-  allow_virtual_network_access = var.SPOKE-TO-HUB-allow_virtual_network_access
-  allow_forwarded_traffic      = var.SPOKE-TO-HUB-allow_forwarded_traffic
-  allow_gateway_transit        = var.SPOKE-TO-HUB-allow_gateway_transit
-  use_remote_gateways = var.SPOKE-TO-HUB-use_remote_gateways
+  allow_virtual_network_access = var.spoke_to_hub_allow_virtual_network_access
+  allow_forwarded_traffic      = var.spoke_to_hub_allow_forwarded_traffic
+  allow_gateway_transit        = var.spoke_to_hub_allow_gateway_transit
+  use_remote_gateways = var.spoke_to_hub_use_remote_gateways
   
 }

@@ -100,12 +100,15 @@ module "hub_spoke_peerings" {
   hub_resource_group_name   = azurerm_resource_group.hub[each.value.hub].name
 
   # Hub → Spoke
-  HUB-TO-SPOKE-allow_virtual_network_access = var.HUB-TO-SPOKE-allow_virtual_network_access
-  HUB-TO-SPOKE-allow_forwarded_traffic      = var.HUB-TO-SPOKE-allow_forwarded_traffic
-  HUB-TO-SPOKE-allow_gateway_transit        = var.HUB-TO-SPOKE-allow_allow_gateway_transit
-  HUB-TO-SPOKE-use_remote_gateways          = var.HUB-TO-SPOKE-allow_use_remote_gateways
-  
-  
+
+hub_to_spoke_allow_virtual_network_access = var.hub_to_spoke_allow_virtual_network_access
+hub_to_spoke_allow_forwarded_traffic      = var.hub_to_spoke_allow_forwarded_traffic
+hub_to_spoke_allow_gateway_transit        = var.hub_to_spoke_allow_gateway_transit
+hub_to_spoke_use_remote_gateways          = var.hub_to_spoke_use_remote_gateways
+
+
+
+
 
 
   #SPOKE (cada spoke)
@@ -114,11 +117,12 @@ module "hub_spoke_peerings" {
   spoke_resource_group_name = azurerm_resource_group.spokes[each.key].name
 
   # Spoke → Hub
-  SPOKE-TO-HUB-allow_virtual_network_access = var.SPOKE-TO-HUB-allow_virtual_network_access
-  SPOKE-TO-HUB-allow_forwarded_traffic      = var.SPOKE-TO-HUB-allow_forwarded_traffic
-  SPOKE-TO-HUB-allow_gateway_transit        = var.HUB-TO-SPOKE-allow_allow_gateway_transit
-  SPOKE-TO-HUB-use_remote_gateways          = var.HUB-TO-SPOKE-allow_use_remote_gateways
-  
+
+  spoke_to_hub_allow_virtual_network_access = var.spoke_to_hub_allow_virtual_network_access
+  spoke_to_hub_allow_forwarded_traffic      = var.spoke_to_hub_allow_forwarded_traffic
+  spoke_to_hub_allow_gateway_transit        = var.spoke_to_hub_allow_gateway_transit
+  spoke_to_hub_use_remote_gateways          = var.spoke_to_hub_use_remote_gateways
+
 
   depends_on = [module.hub_vnet, module.spoke_vnets]
 }

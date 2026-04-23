@@ -89,37 +89,37 @@ variable "common_tags" {
 #─────────────────────────────────────
 #Declarar variaveis a usar em peerings
 #─────────────────────────────────────
-variable "HUB-TO-SPOKE-allow_virtual_network_access" {
+variable "hub_to_spoke_allow_virtual_network_access" {
   description = "HUB TO SPOKE -> virtual network access"
   type        = bool
 }
-variable "HUB-TO-SPOKE-allow_forwarded_traffic" {
+variable "hub_to_spoke_allow_forwarded_traffic" {
   description = "HUB TO SPOKE -> virtual network access"
   type        = bool
 }
-variable "HUB-TO-SPOKE-allow_allow_gateway_transit" {
+variable "hub_to_spoke_allow_gateway_transit" {
   description = "HUB TO SPOKE -> virtual network access"
   type        = bool
 }
-variable "HUB-TO-SPOKE-allow_use_remote_gateways" {
+variable "hub_to_spoke_use_remote_gateways" {
   description = "HUB TO SPOKE -> virtual network access"
   type        = bool
 }
 
 
-variable "SPOKE-TO-HUB-allow_virtual_network_access" {
+variable "spoke_to_hub_allow_virtual_network_access" {
   description = "HUB TO SPOKE -> virtual network access"
   type        = bool
 }
-variable "SPOKE-TO-HUB-allow_forwarded_traffic" {
+variable "spoke_to_hub_allow_forwarded_traffic" {
   description = "HUB TO SPOKE -> virtual network access"
   type        = bool
 }
-variable "SPOKE-TO-HUB-allow_allow_gateway_transit" {
+variable "spoke_to_hub_allow_gateway_transit" {
   description = "HUB TO SPOKE -> virtual network access"
   type        = bool
 }
-variable "SPOKE-TO-HUB-allow_use_remote_gateways" {
+variable "spoke_to_hub_use_remote_gateways" {
   description = "HUB TO SPOKE -> virtual network access"
   type        = bool
 }
