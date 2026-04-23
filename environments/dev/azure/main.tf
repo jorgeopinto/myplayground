@@ -101,10 +101,10 @@ module "hub_spoke_peerings" {
 
   # Hub → Spoke
 
-hub_to_spoke_allow_virtual_network_access = var.hub_to_spoke_allow_virtual_network_access
-hub_to_spoke_allow_forwarded_traffic      = var.hub_to_spoke_allow_forwarded_traffic
-hub_to_spoke_allow_gateway_transit        = var.hub_to_spoke_allow_gateway_transit
-hub_to_spoke_use_remote_gateways          = var.hub_to_spoke_use_remote_gateways
+hub_to_spoke_allow_virtual_network_access_m = var.hub_to_spoke_allow_virtual_network_access
+hub_to_spoke_allow_forwarded_traffic_m     = var.hub_to_spoke_allow_forwarded_traffic
+hub_to_spoke_allow_gateway_transit_m        = var.hub_to_spoke_allow_gateway_transit
+hub_to_spoke_use_remote_gateways_m          = var.hub_to_spoke_use_remote_gateways
 
 
 
@@ -118,10 +118,10 @@ hub_to_spoke_use_remote_gateways          = var.hub_to_spoke_use_remote_gateways
 
   # Spoke → Hub
 
-  spoke_to_hub_allow_virtual_network_access = var.spoke_to_hub_allow_virtual_network_access
-  spoke_to_hub_allow_forwarded_traffic      = var.spoke_to_hub_allow_forwarded_traffic
-  spoke_to_hub_allow_gateway_transit        = var.spoke_to_hub_allow_gateway_transit
-  spoke_to_hub_use_remote_gateways          = var.spoke_to_hub_use_remote_gateways
+  spoke_to_hub_allow_virtual_network_access_m = var.spoke_to_hub_allow_virtual_network_access
+  spoke_to_hub_allow_forwarded_traffic_m      = var.spoke_to_hub_allow_forwarded_traffic
+  spoke_to_hub_allow_gateway_transit_m        = var.spoke_to_hub_allow_gateway_transit
+  spoke_to_hub_use_remote_gateways_m          = var.spoke_to_hub_use_remote_gateways
 
 
   depends_on = [module.hub_vnet, module.spoke_vnets]

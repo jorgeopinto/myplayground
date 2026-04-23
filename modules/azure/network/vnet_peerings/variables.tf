@@ -32,24 +32,24 @@ variable "spoke_resource_group_name" {
 #peering parameters
 #----------------------------------------
 
-variable "hub_to_spoke_allow_virtual_network_access" {
+variable "hub_to_spoke_allow_virtual_network_access_m" {
   description = "Permite tráfego entre VNets. normalmente true"
   type        = bool
   #default     = true
 }
-variable "hub_to_spoke_allow_forwarded_traffic" {
+variable "hub_to_spoke_allow_forwarded_traffic_m" {
   description = "Permite tráfego que foi roteado por um appliance (firewall, NVA). Usado quando tens firewalls, Azure Firewall, appliances virtuais. dá igual que seja tru or false se nao tiver NVA."
   type        = bool
   #default     = true
 }
 
-variable "hub_to_spoke_allow_gateway_transit" {
+variable "hub_to_spoke_allow_gateway_transit_m" {
   description = "Permite que a VNet local ofereça o seu gateway VPN/ExpressRoute à outra VNet. True do lado do HUB"
   type        = bool
   #default     = true
 }
 
-variable "hub_to_spoke_use_remote_gateways" {
+variable "hub_to_spoke_use_remote_gateways_m" {
   description = "Permite que a VNet local use o gateway da VNet remota. Só pode ser usada de um dos lados como true, clarament do lado oda spokes."
   type        = bool
   #default     = false
@@ -57,24 +57,24 @@ variable "hub_to_spoke_use_remote_gateways" {
 
 #--------
 
-variable "spoke_to_hub_allow_virtual_network_access" {
+variable "spoke_to_hub_allow_virtual_network_access_m" {
   description = "Permite tráfego entre VNets. normalmente true"
   type        = bool
   #default     = true
 }
-variable "spoke_to_hub_allow_forwarded_traffic" {
+variable "spoke_to_hub_allow_forwarded_traffic_m" {
   description = "Permite tráfego que foi roteado por um appliance (firewall, NVA). Usado quando tens firewalls, Azure Firewall, appliances virtuais. dá igual que seja tru or false se nao tiver NVA."
   type        = bool
   #default     = true
 }
 
-variable "spoke_to_hub_allow_gateway_transit" {
+variable "spoke_to_hub_allow_gateway_transit_m" {
   description = "Permite que a VNet local ofereça o seu gateway VPN/ExpressRoute à outra VNet. True do lado do HUB"
   type        = bool
   #default     = false
 }
 
-variable "spoke_to_hub_use_remote_gateways" {
+variable "spoke_to_hub_use_remote_gateways_m" {
   description = "Permite que a VNet local use o gateway da VNet remota. Só pode ser usada de um dos lados como true, clarament do lado oda spokes."
   type        = bool
   #default     = true
