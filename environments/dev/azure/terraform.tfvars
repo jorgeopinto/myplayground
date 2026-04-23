@@ -64,7 +64,7 @@ common_tags = {
 
 
 spokes = {
-  /*
+  
   # ── Spoke 1: App ──────────────────────────────
   
   spoke1 = {
@@ -89,7 +89,7 @@ spokes = {
     ]
   }
 
-/*
+
   # ── Spoke 2: Data ──────────────────────────────
   spoke2 = {
     hub = "hub1"
@@ -112,7 +112,7 @@ spokes = {
       }
     ]
   }
-  */
+  
   # ── Spoke 3: compute- storage - kubernets ───────────────────
   spoke3 = {
     hub = "hub1"
